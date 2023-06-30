@@ -73,4 +73,69 @@ public class CSVTest {
         String csv = writer.getBuffer().toString();
         System.out.println(csv);
     }
+
+    @Test
+    void createCSVWithTabFormat() throws IOException {
+        StringWriter writer = new StringWriter();
+
+        CSVFormat format = CSVFormat.TDF.builder()
+                .setHeader("First Name", "Last Name", "Value")
+                .build();
+        CSVPrinter printer = new CSVPrinter(writer, format);
+        printer.printRecord("Arief", "Hermawan", 80);
+        printer.printRecord("Hilmi", "Muharrom", 86);
+        printer.flush();
+
+        String csv = writer.getBuffer().toString();
+        System.out.println(csv);
+    }
+
+    @Test
+    void createCSVWithMYSQLFormat() throws IOException {
+        StringWriter writer = new StringWriter();
+
+        CSVFormat format = CSVFormat.MYSQL.builder()
+                .setHeader("First Name", "Last Name", "Value")
+                .build();
+        CSVPrinter printer = new CSVPrinter(writer, format);
+        printer.printRecord("Arief", "Hermawan", 80);
+        printer.printRecord("Hilmi", "Muharrom", 86);
+        printer.flush();
+
+        String csv = writer.getBuffer().toString();
+        System.out.println(csv);
+    }
+
+    @Test
+    void createCSVWithINFORMIXUNLOADCSV() throws IOException {
+        StringWriter writer = new StringWriter();
+
+        CSVFormat format = CSVFormat.INFORMIX_UNLOAD_CSV.builder()
+                .setHeader("First Name", "Last Name", "Value")
+                .build();
+        CSVPrinter printer = new CSVPrinter(writer, format);
+        printer.printRecord("Arief", "Hermawan", 80);
+        printer.printRecord("Hilmi", "Muharrom", 86);
+        printer.flush();
+
+        String csv = writer.getBuffer().toString();
+        System.out.println(csv);
+    }
+
+    @Test
+    void createCSVWithMONGODB_CSV() throws IOException {
+        StringWriter writer = new StringWriter();
+
+        CSVFormat format = CSVFormat.MONGODB_CSV.builder()
+                .setHeader("First Name", "Last Name", "Value")
+                .build();
+        CSVPrinter printer = new CSVPrinter(writer, format);
+        printer.printRecord("Arief", "Hermawan", 80);
+        printer.printRecord("Hilmi", "Muharrom", 86);
+        printer.flush();
+
+        String csv = writer.getBuffer().toString();
+        System.out.println(csv);
+    }
+
 }
